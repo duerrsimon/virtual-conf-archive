@@ -5,7 +5,12 @@ Vue.config.productionTip = false;
 
 import VueTailwind from "vue-tailwind";
 
-import { TDatepicker, TInput, TCheckbox } from "vue-tailwind/dist/components";
+import {
+  TDatepicker,
+  TInput,
+  TCheckbox,
+  TTable
+} from "vue-tailwind/dist/components";
 
 new Vue({
   render: (h) => h(App)
@@ -128,6 +133,30 @@ const settings = {
         danger: "border-red-300 bg-red-50 placeholder-red-200 text-red-900",
         success:
           "border-green-300 bg-green-50 placeholder-gray-400 text-green-900"
+      }
+    }
+  },
+  "t-table": {
+    component: TTable,
+    props: {
+      classes: {
+        table:
+          "min-w-full divide-y divide-gray-100 shadow-sm border-gray-200 border",
+        thead: "",
+        theadTr: "",
+        theadTh: "px-3 py-2 font-semibold text-left bg-gray-100 border-b",
+        tbody: "bg-white divide-y divide-gray-100",
+        tr: "",
+        td: "px-3 py-2 whitespace-no-wrap",
+        tfoot: "",
+        tfootTr: "",
+        tfootTd: ""
+      },
+      variants: {
+        thin: {
+          td: "p-1 whitespace-no-wrap text-sm",
+          theadTh: "p-1 font-semibold text-left bg-gray-100 border-b text-sm"
+        }
       }
     }
   },

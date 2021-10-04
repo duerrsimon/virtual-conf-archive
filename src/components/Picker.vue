@@ -172,6 +172,22 @@
                   </button>
                 </template>
               </vue-csv-import>
+
+              <div v-if="conference.csv.length > 0">
+                <h5 class="text-lg mt-4">Preview of particpants</h5>
+
+                <t-table
+                  :headers="['Name', 'Email']"
+                  :data="previewCsv"
+                ></t-table>
+
+                <div class="w-full text-right">
+                  <span class="text-sm">
+                    Showing {{ previewCsv.length }} of
+                    {{ conference.csv.length }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -179,11 +195,13 @@
     </section>
     <div class="text-xl text-center bg-gray-200 py-8 font-light">
       <p class="py-2">Okay, ready to archive!</p>
-      <p class="pb-2 text-sm">You will need to sign-in using your ORCID.</p>
+      <p class="pb-2 text-sm">
+        You will need to sign-in using your ORCID in the next step to continue.
+      </p>
       <button
         class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
-        Start
+        Continue
       </button>
     </div>
   </div>
@@ -196,6 +214,15 @@ export default {
   name: "Picker",
   props: {},
   components: { VueCsvImport },
+  computed: {
+    previewCsv() {
+      if (this.conference.csv) {
+        return this.conference.csv.slice(0, 2);
+      } else {
+        return [];
+      }
+    },
+  },
   data() {
     return {
       conference: {
@@ -204,7 +231,7 @@ export default {
         website: "",
         location: "",
         virtual: false,
-        csv: null,
+        csv: [],
       },
     };
   },
