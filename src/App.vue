@@ -6,7 +6,7 @@
     />
     <Menu v-on:showDetails="visible = !visible" />
 
-    <Hero v-on:showDetails="visible = !visible" />
+    <Hero v-on:showDetails="visible = !visible" :visible="visible" />
     <transition name="fade">
       <Picker v-if="visible" />
     </transition>

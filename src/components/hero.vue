@@ -44,5 +44,19 @@
         />
       </div>
     </div>
+
+    <div class="flex justify-center pb-4 items-center">
+      <span class="font-light text-gray-500 uppercase px-4 pt-2"
+        >Powered by</span
+      >
+      <img src="/zenodo.svg" alt="Zenodo logo" class="w-24 opacity-50" />
+    </div>
+
+    <hr class="mx-24 mt-4" v-if="!visible" />
   </section>
 </template>
+<script>
+export default {
+  props: ["visible"],
+};
+</script>
